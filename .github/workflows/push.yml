@@ -7,14 +7,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: build RPM package
+    - name: Build RPM package
       id: rpm
       uses: naveenrajm7/rpmbuild@master
       with:
         spec_file: dci-labs-ssh-pubkeys.spec
 
+    - name: Get short SHA
+      id: get-sha
+      run: |
+        echo "::set-output name=short::${GITHUB_SHA:0:7}"
+
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: dci-labs-ssh-pubkeys-0.1~git${GITHUB_SHA:0:7}.noarch.rpm
+        name: dci-labs-ssh-pubkeys-0.1~git${{ steps.get-sha.outputs.short }}.noarch.rpm
         path: ${{ steps.rpm.outputs.rpm_dir_path }}
