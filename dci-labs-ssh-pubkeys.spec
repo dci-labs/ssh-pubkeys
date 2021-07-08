@@ -1,5 +1,4 @@
 %global username dci-labs
-%global branch main
 
 Name:           dci-labs-ssh-pubkeys
 Version:        0.1
@@ -8,7 +7,6 @@ Release:        1%{?dist}
 Summary:        DCI Labs members public SSH keys
 License:        ASL2.0
 URL:            https://github.com/dci-labs/ssh-pubkeys
-Source0:        %{url}/archive/%{branch}/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -19,7 +17,6 @@ Requires:       sudo
 This package contains the SSH public keys of the DCI Labs team members
 
 %prep
-%autosetup -n ssh-pubkeys-%{branch}
 
 %build
 
@@ -38,8 +35,6 @@ EOF
 %attr(0440, root, root) %{_sysconfdir}/sudoers.d/%{username}
 %attr(0700, %{username}, %{username}) /home/%{username}/.ssh
 %attr(0600, %{username}, %{username}) /home/%{username}/.ssh/authorized_keys
-%license LICENSE
-%doc README.md
 
 %pre
 getent group %{username} >/dev/null || groupadd -r %{username}
