@@ -1,7 +1,7 @@
 %global username dci-labs
 %global branch main
 
-Name:           %{username}-ssh-pubkeys
+Name:           dci-labs-ssh-pubkeys
 Version:        0.1
 Release:        1%{?dist}
 
