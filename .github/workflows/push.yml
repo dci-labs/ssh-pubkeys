@@ -17,4 +17,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: dci-labs-ssh-pubkeys.rpm.zip
-          path: ${{ steps.rpm.outputs.rpm_dir_path }}/noarch/dci-labs-ssh-pubkeys-*-noarch.rpm
+          path: ${{ steps.rpm.outputs.rpm_dir_path }}/noarch/*.rpm
